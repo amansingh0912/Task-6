@@ -1,0 +1,79 @@
+.word-typing-container {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.display-word {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  padding: 10px;
+  border: 2px solid #000;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.instruction {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.input-box {
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.submit-button, .try-again-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
+.submit-button {
+  background-color: green;
+  color: white;
+}
+
+.try-again-button {
+  background-color: orange;
+  color: white;
+}
+
+.feedback {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.feedback.success {
+  color: green;
+}
+
+.feedback.error {
+  color: red;
+}
