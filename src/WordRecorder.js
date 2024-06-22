@@ -20,7 +20,8 @@ const WordRecorder = ({ sentence }) => {
       recognitionRef.current.lang = 'en-US';
 
       recognitionRef.current.onresult = (event) => {
-        const speechResult = event.results[0][0].transcript.toLowerCase();
+        const speechResult = event.results[0][0].transcript.toLowerCase().trim();
+        console.log('Speech recognition result:', speechResult);
         setTranscript(speechResult);
       };
 
@@ -68,6 +69,9 @@ const WordRecorder = ({ sentence }) => {
     const spokenWords = transcript.split(' ').map(word => word.trim());
     const displayedWords = formattedSentence.split(' ').map(word => word.trim());
 
+    console.log('Displayed words:', displayedWords);
+    console.log('Spoken words:', spokenWords);
+
     if (spokenWords.join(' ') === displayedWords.join(' ')) {
       setFeedback('You have spoken the sentence correctly');
     } else {
@@ -87,12 +91,15 @@ const WordRecorder = ({ sentence }) => {
       <h2 className="prompt">Read and <span className="highlight">record</span> yourself saying the question in the space below.</h2>
       <h3 className="sentence">{sentence}</h3>
       <div className="controls">
-        {!recording && <button onClick={startRecording} className="record-button">Press and hold to record</button>}
-        {recording && <button onClick={stopRecording} className="stop-button">Stop Recording</button>}
+        {!recording ? (
+          <button onClick={startRecording} className="record-button">Press and hold to record</button>
+        ) : (
+          <button onClick={stopRecording} className="stop-button">Stop Recording</button>
+        )}
       </div>
       {audioUrl && <audio controls src={audioUrl} />}
       <div className="buttons">
-        <button onClick={handleSubmit} disabled={!transcript} className="submit-button">Check Answer</button>
+        <button onClick={handleSubmit} className="submit-button">Check Answer</button>
         <button onClick={handleRetry} className="retry-button">Retry</button>
       </div>
       {feedback && <div className={`feedback ${feedback.includes('correctly') ? 'success' : 'error'}`}>{feedback}</div>}
